@@ -1,3 +1,4 @@
+
 EXP NO:1 C PROGRAM FOR ARRAY OF STRUCTURE TO CHECK ELIGIBILITY FOR THE VACCINE.
 
 Aim:
@@ -15,13 +16,43 @@ Else
 6.	Return 0
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+struct data {
+    int num;
+    int age;
+};
+
+int main() {
+    int n;
+    printf("Enter the number of persons: ");
+    scanf("%d", &n);
+
+    struct data a[n]; // Array of structures
+
+    for (int i = 0; i < n; i++) {
+        a[i].num = i + 1;
+        printf("Enter age of person %d: ", a[i].num);
+        scanf("%d", &a[i].age);
+    }
+
+    for (int i = 0; i < n; i++) {
+        printf("Person %d - ", a[i].num);
+        if (a[i].age <= 6)
+            printf("vaccine eligibility: yes\n");
+        else
+            printf("vaccine eligibility: no\n");
+    }
+
+    return 0;
+}
+```
 
 
 Output:
 
-//paste your output here
+![Screenshot 2025-04-26 142640](https://github.com/user-attachments/assets/dbd13bff-51bd-40e3-8f68-f1b404d4cecc)
 
 
 Result:
@@ -30,6 +61,7 @@ Thus, the program is verified successfully.
 
 
 EXP NO:2 C PROGRAM FOR PASSING STRUCTURES AS FUNCTION ARGUMENTS AND RETURNING A STRUCTURE FROM A FUNCTION
+
 Aim:
 To write a C program for passing structure as function and returning a structure from a function
 
@@ -44,15 +76,41 @@ Algorithm:
  
 Program:
 
-//type your code here
+#include <stdio.h>
+struct numbers {
+    int a;
+    int b;
+};
 
+struct numbers add(struct numbers n) {
+    struct numbers result;
+    result.a = n.a + n.b;  
+    return result;
+}
+
+int main() {
+    struct numbers n, sum;
+
+    printf("Enter value for a: ");
+    scanf("%d", &n.a);
+
+    printf("Enter value for b: ");
+    scanf("%d", &n.b);
+
+    sum = add(n);
+
+
+    printf("Sum of a and b = %d\n", sum.a);
+
+    return 0;
+}
 
 
 
 Output:
 
 
-//paste your output here
+![Screenshot 2025-04-27 150844](https://github.com/user-attachments/assets/bd12bf5d-7f2b-49e2-8cb6-1880d25bb018)
 
 
 
@@ -86,25 +144,23 @@ Use scanf to input the file name into the name array.
  
 Program:
 
-//type your code here
-
+#include <stdio.h>
+int main(){
+    FILE *fp;
+    char file[30];
+    scanf("%s",file);
+    printf("%s File Created Successfully\n",file);
+    fp=fopen(file,"w");
+    printf("%s File Opened\n",file);
+    fclose(fp);
+    printf("%s File Closed\n",file);
+    return 0;
+}
 
 
 
 Output:
-
-
-//paste your output here
-
-
-
-
-
-
-
-
-
-
+![image](https://github.com/user-attachments/assets/c9d4943f-6173-4393-99f8-b7dedb14ca8e)
 
 Result:
 Thus, the program is verified successfully
@@ -112,6 +168,7 @@ Thus, the program is verified successfully
 
 
 EXP NO:4   PROGRAM TO READ A FILE NAME FROM USER, WRITE THAT FILE AND INSERT TEXT IN TO THAT FILE
+
 Aim:
 To write a C program to read, a file and insert text in that file
 Algorithm:
@@ -133,18 +190,30 @@ Use scanf to input the file name into the name array and the number of strings i
  
 Program:
 
-//type your code here
-
+#include <stdio.h>
+#include<stdlib.h>
+int main(){
+    FILE *fp;
+    char a[100];
+    int n;
+    scanf("%s %d",a,&n);
+    int arr[n];
+    fp=fopen(a,"w");
+    printf("%s Opened\n",a);
+    for(int i=0;i<n;i++){
+        scanf("%d",&arr[n]);
+    }
+    printf("Data added Successfully");
+    fclose(fp);
+}
 
 
 
 Output:
 
 
-//paste your output here
 
-
-
+![image](https://github.com/user-attachments/assets/90b24257-75ea-4df0-b33a-73ecabe2c002)
 
 
 
@@ -187,15 +256,47 @@ Algorithm:
 
 Program:
 
-//type your code here
+#include <stdio.h>
+#include <stdlib.h>
 
+struct subject {
+    char name[50];
+    int marks;
+};
 
+int main() {
+    struct subject *s;
+    int n, i;
+
+    printf("Enter the number of subjects: ");
+    scanf("%d", &n);
+
+    s = (struct subject *)malloc(n * sizeof(struct subject));
+
+    if (s == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1; 
+    }
+    for (i = 0; i < n; i++) {
+        printf("Enter name of subject %d: \n", i + 1);
+        scanf("%s", s[i].name);
+        printf("Enter marks of subject %d: \n", i + 1);
+        scanf("%d", &s[i].marks);
+    }
+    printf("\n--- Subject Details ---\n");
+    for (i = 0; i < n; i++) {
+        printf("Subject %d: Name = %s, Marks = %d\n", i + 1, s[i].name, s[i].marks);
+    }
+    free(s);
+
+    return 0;
+}
 
 
 Output:
 
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/ced37eb4-b337-4953-b1fc-367c483c59c9)
 
 
 
